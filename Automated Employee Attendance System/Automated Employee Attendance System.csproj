@@ -16,6 +16,8 @@
     <None Remove="UI\DashbordS.png" />
     <None Remove="UI\Employee.png" />
     <None Remove="UI\EmployeeS.png" />
+    <None Remove="UI\Login_D.png" />
+    <None Remove="UI\Login_W.png" />
     <None Remove="UI\Report.png" />
     <None Remove="UI\ReportS.png" />
     <None Remove="UI\Settings.png" />
@@ -42,6 +44,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\Fingerprint_biometric_scan.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Login_D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Login_W.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\Report.png">

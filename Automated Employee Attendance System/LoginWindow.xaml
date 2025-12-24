@@ -23,9 +23,13 @@
                     <ColumnDefinition Width="400" />
                 </Grid.ColumnDefinitions>
 
-                <Border>
+               
+       
 
-                </Border>
+
+                    <Image  Grid.Column="0" Width="500" Source="/UI/Login_D.png"
+                           HorizontalAlignment="Center"/>
+                
 
                 <Border Grid.Column="1" Width="360"
       Padding="30"
