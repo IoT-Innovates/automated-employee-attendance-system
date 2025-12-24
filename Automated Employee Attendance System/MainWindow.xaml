@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Automated_Employee_Attendance_System"
         mc:Ignorable="d"
+        FontFamily="Microsoft Sans Serif"
         SnapsToDevicePixels="True"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
@@ -34,53 +35,84 @@
 
             <StackPanel Grid.Row="1">
 
-                <RadioButton Height="50" Width="300"  Style="{StaticResource SelectableRadioButtonStyle}" >
+                <RadioButton Height="44" Width="260"
+                 Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/UI/Dashbord.png" Width="30"/>
-                        <TextBlock VerticalAlignment="Center" Text="Dashboard" TextAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                        <Image Source="/UI/Dashbord.png" Width="24"/>
+                        <TextBlock VerticalAlignment="Center"
+                       Text="Dashboard"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Margin="8,0,0,0"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Height="50" Width="300" IsChecked="True" Style="{StaticResource SelectableRadioButtonStyle}" >
+                <RadioButton Click="EmployeeWindow_Click"
+                 Height="44" Width="260"
+                 IsChecked="True"
+                 Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/UI/EmployeeS.png" Width="30"/>
-                        <TextBlock VerticalAlignment="Center" Text="Employee" TextAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                        <Image Source="/UI/EmployeeS.png" Width="24"/>
+                        <TextBlock VerticalAlignment="Center"
+                       Text="Employee"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Margin="8,0,0,0"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Height="50" Width="300"  Style="{StaticResource SelectableRadioButtonStyle}" >
+                <RadioButton Height="44" Width="260"
+                 Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/UI/Attendance.png" Width="30"/>
-                        <TextBlock VerticalAlignment="Center" Text="Attendance" TextAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                        <Image Source="/UI/Attendance.png" Width="24"/>
+                        <TextBlock VerticalAlignment="Center"
+                       Text="Attendance"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Margin="8,0,0,0"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Height="50" Width="300"  Style="{StaticResource SelectableRadioButtonStyle}" >
+                <RadioButton Height="44" Width="260"
+                 Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/UI/Report.png" Width="30"/>
-                        <TextBlock VerticalAlignment="Center" Text="Reports" TextAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                        <Image Source="/UI/Report.png" Width="24"/>
+                        <TextBlock VerticalAlignment="Center"
+                       Text="Reports"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Margin="8,0,0,0"/>
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Height="50" Width="300"  Style="{StaticResource SelectableRadioButtonStyle}" >
+                <RadioButton Height="44" Width="260"
+                 Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/UI/Settings.png" Width="30"/>
-                        <TextBlock VerticalAlignment="Center" Text="Settings" TextAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                        <Image Source="/UI/Settings.png" Width="24"/>
+                        <TextBlock VerticalAlignment="Center"
+                       Text="Settings"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Margin="8,0,0,0"/>
                     </StackPanel>
                 </RadioButton>
 
             </StackPanel>
 
+
             <StackPanel Height="100"  VerticalAlignment="Bottom" Grid.Row="2">
                 <Line X1="0" Y1="0" X2="350" Y2="0" Stroke="Gray" StrokeThickness="1" />
-                <TextBlock Text="Arduino Conected" FontSize="18" TextAlignment="Center" FontWeight="Bold" Margin="6" Foreground="Green"/>
+                <TextBlock Text="Arduino Conected" FontSize="18" TextAlignment="Center" FontWeight="SemiBold" Margin="6" Foreground="Green"/>
                 <TextBlock Text="Version 1.0.0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,0" FontSize="12" Foreground="Gray"/>
                 <TextBlock Text="© 2024 Automated Employee Attendance System" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" FontSize="12" Foreground="Gray"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid Grid.Column="1" Background="#FFECECEC">
+        <Grid Background="#FFECECEC" Grid.Column="1">
+            <Border CornerRadius="20">
+                <ContentControl  Margin="20" x:Name="MainContent"   Background="Transparent"  />
+            </Border>
         </Grid>
         <!-- Main content area -->
 

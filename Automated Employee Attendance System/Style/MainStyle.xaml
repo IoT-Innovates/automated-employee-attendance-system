@@ -7,7 +7,7 @@
     <SolidColorBrush x:Key="BirthdayBoderHoverColor" Color="White"/>
     <SolidColorBrush x:Key="Background" Color="Transparent"/>
     <SolidColorBrush x:Key="BorderBrush" Color="Black"/>
-    <SolidColorBrush x:Key="Forground" Color="White"/>
+    <SolidColorBrush x:Key="Forground" Color="Black"/>
     <SolidColorBrush x:Key="DataGridBackground" Color="Transparent"/>
 
     <SolidColorBrush x:Key="SystemGridForground" Color="DarkCyan"/>
@@ -620,13 +620,13 @@
         <Setter Property="Background" Value="Transparent"/>
         
 
-        <Setter Property="Height" Value="38"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="Width" Value="auto"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
                     <Border x:Name="Bd"
-                            Margin="5"
+                            Margin="0"
                         CornerRadius="5"
                             Cursor="Hand"
                         Background="{TemplateBinding Background}"
@@ -644,8 +644,8 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="#FF1469FF"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter TargetName="Bd" Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#0660FE"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="Bd" Property="Background" Value="Transparent"/>
