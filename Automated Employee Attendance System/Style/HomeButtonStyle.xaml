@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="RadioButtonBackground" Color="Gray"/>
+
+
+
+   <SolidColorBrush x:Key="Barcolor" Color="White"/>
+
+
+
+    <Style x:Key="SelectableRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Height" Value="40"/>
+
+        <Setter Property="FontFamily" Value="DMSans"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0.5"
+                            
+                        CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Left"
+                                          Margin="20,0,0,0"
+                                      VerticalAlignment="Center"/>
+
+                        <Border.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                            </Style>
+                        </Border.Resources>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <!-- Hover -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+
+            <!-- Selected -->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="#FFE2E2E2"/>
+                <Setter Property="Foreground" Value="#0660FE"/>
+                
+            </Trigger>
+            
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{DynamicResource RadioButtonBackground}"/>
+            </Trigger>
+
+        </Style.Triggers>
+        
+    </Style>
+    
+</ResourceDictionary>

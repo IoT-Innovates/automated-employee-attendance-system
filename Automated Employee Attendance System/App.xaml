@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:Automated_Employee_Attendance_System"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="/Style/MainStyle.xaml" />
+                <ResourceDictionary Source="Style/HomeButtonStyle.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+
     </Application.Resources>
 </Application>

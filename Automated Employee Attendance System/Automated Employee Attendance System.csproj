@@ -9,4 +9,50 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="UI\Attendance.png" />
+    <None Remove="UI\AttendanceS.png" />
+    <None Remove="UI\Dashbord.png" />
+    <None Remove="UI\DashbordS.png" />
+    <None Remove="UI\Employee.png" />
+    <None Remove="UI\EmployeeS.png" />
+    <None Remove="UI\Report.png" />
+    <None Remove="UI\ReportS.png" />
+    <None Remove="UI\Settings.png" />
+    <None Remove="UI\SettingsS.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="UI\Attendance.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\AttendanceS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Dashbord.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\DashbordS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Employee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\EmployeeS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Report.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\ReportS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\SettingsS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
