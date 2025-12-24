@@ -6,6 +6,7 @@
     <SolidColorBrush x:Key="BirthdayBoderBackColor" Color="White"/>
     <SolidColorBrush x:Key="BirthdayBoderHoverColor" Color="White"/>
     <SolidColorBrush x:Key="Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ContBackground" Color="Transparent"/>
     <SolidColorBrush x:Key="BorderBrush" Color="Black"/>
     <SolidColorBrush x:Key="Forground" Color="Black"/>
     <SolidColorBrush x:Key="DataGridBackground" Color="Transparent"/>

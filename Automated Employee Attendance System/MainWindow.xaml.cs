@@ -25,7 +25,7 @@ namespace Automated_Employee_Attendance_System
         public MainWindow()
         {
             InitializeComponent();
-           
+            ThemeManager.ApplyTheme(this);
         }
 
 
@@ -34,6 +34,7 @@ namespace Automated_Employee_Attendance_System
 
 
         private void EmployeeWindow_Click(object sender, RoutedEventArgs e) => LoadView(new EmployeeWindow());
+        private void Settings_Click(object sender, RoutedEventArgs e) => LoadView(new SettingsWindow());
 
 
         private void LoadView(UserControl view)

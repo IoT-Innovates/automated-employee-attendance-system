@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="White">
+        <Grid Grid.Column="0" Background="{DynamicResource Background}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350" />
                 <ColumnDefinition Width="*" />
@@ -85,7 +85,7 @@
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Height="44" Width="260"
+                <RadioButton Click="Settings_Click" Height="44" Width="260"
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/UI/Settings.png" Width="24"/>

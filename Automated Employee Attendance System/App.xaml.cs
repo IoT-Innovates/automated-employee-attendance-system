@@ -9,6 +9,7 @@ namespace Automated_Employee_Attendance_System
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }
