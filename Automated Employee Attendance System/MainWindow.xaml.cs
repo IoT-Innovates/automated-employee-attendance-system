@@ -20,6 +20,14 @@ namespace Automated_Employee_Attendance_System
             _user = user;
             ApplyAccess();
             ThemeManager.ApplyTheme(this);
+
+            Dashbord_Tab.IsChecked = true;
+            LoadView(new DashboardWindow());
+        }
+
+        private void Dashboard_Click(object sender, RoutedEventArgs e)
+        {
+            LoadView(new DashboardWindow());
         }
 
 
@@ -34,7 +42,6 @@ namespace Automated_Employee_Attendance_System
             Settings_Tab.Visibility = _user.Settings ? Visibility.Visible : Visibility.Collapsed;
           
         }
-
 
 
 
