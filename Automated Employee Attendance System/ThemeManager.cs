@@ -93,6 +93,7 @@ namespace Automated_Employee_Attendance_System
 
 
             Application.Current.Resources["ContBackground"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? "#f3f3f7" : "#000000"));
+            Application.Current.Resources["ThemeBackgroundDotsColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? "#33252525" : "#30FFFFFF"));
             Application.Current.Resources["Background"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? "#FFFFFF" : "#0a0a0a"));
 
             Application.Current.Resources["SystemGridForground"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(isLight ? "#111111" : "#FFFFFF"));

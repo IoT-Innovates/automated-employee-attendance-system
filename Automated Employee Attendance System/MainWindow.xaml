@@ -236,11 +236,34 @@
 
         </Grid>
 
-        <Grid Background="{DynamicResource ContBackground}" Grid.Row="1" Grid.Column="1">
-            <Border CornerRadius="20">
-                <ContentControl  Margin="20" x:Name="MainContent"   Background="Transparent"  />
-            </Border>
-        </Grid>
+        <Border Margin="15,0,15,15" CornerRadius="15" BorderThickness="1" BorderBrush="Transparent" Grid.Row="1" Grid.Column="1" Background="{DynamicResource ContBackground}">
+            <Grid   >
+
+                <Grid.Background>
+                    <DrawingBrush TileMode="Tile"
+               Viewport="0,0,30,30"
+               ViewportUnits="Absolute"
+               Stretch="None">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Brush="{DynamicResource ThemeBackgroundDotsColor}">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry
+                     Center="3,3"
+                     RadiusX="1"
+                     RadiusY="1"/>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Grid.Background>
+
+                <Border CornerRadius="20">
+                    <ContentControl  Margin="20" x:Name="MainContent"   Background="Transparent"  />
+                </Border>
+            </Grid>
+        </Border>
+
+       
         <!-- Main content area -->
 
 
