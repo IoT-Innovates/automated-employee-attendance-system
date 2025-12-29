@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using XamlAnimatedGif;
 using System.Windows.Shapes;
 
 namespace Automated_Employee_Attendance_System
@@ -20,13 +21,15 @@ namespace Automated_Employee_Attendance_System
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private string UserNameText;
+
         public LoginWindow()
         {
             InitializeComponent();
             SeedAdmin();
+            Loaded += LoadingWindow_Loaded; // window render වෙන විට
             ThemeManager.ApplyTheme(this);
         }
-
 
         void SeedAdmin()
         {
@@ -48,6 +51,37 @@ namespace Automated_Employee_Attendance_System
             }
         }
 
+
+
+        private async void LoadingWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // GIF load background thread
+            await Task.Run(() =>
+            {
+                string baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+                string gifPath = System.IO.Path.Combine(baseFolder, "UI", "time_tracker.gif");
+                var gifUri = new Uri(gifPath, UriKind.Absolute);
+
+                Dispatcher.Invoke(() =>
+                {
+                    AnimationBehavior.SetSourceUri(MyGifImage, gifUri);
+                    AnimationBehavior.SetRepeatBehavior(MyGifImage, System.Windows.Media.Animation.RepeatBehavior.Forever);
+                });
+            });
+
+
+
+
+        }
+
+        private void Close_Click (object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+
+
+
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
             var users = UserService.Load();
@@ -56,16 +90,24 @@ namespace Automated_Employee_Attendance_System
                 u.Username == UserName.Text &&
                 u.PasswordHash == UserService.Hash(Password.Password));
 
+            UserNameText = UserName.Text;
+
+
+
             if (user == null)
             {
+                
+
                 CustomMessageBox.Show("Invalid login");
+                SystemServices.Log($"Loging Fail");
                 return;
             }
 
             ((Button)sender).IsEnabled = false;
 
-            // ✅ ONLY HERE Home opens
+
             new MainWindow(user).Show();
+            SystemServices.Log($"Login {UserNameText}");
             Close();
         }
     }

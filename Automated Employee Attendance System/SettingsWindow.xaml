@@ -5,25 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Automated_Employee_Attendance_System"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             RenderOptions.BitmapScalingMode="HighQuality"
+             FontFamily="Microsoft Sans Serif"
+             SnapsToDevicePixels="True"
+             d:DesignWidth="800">
     <StackPanel>
 
         <StackPanel Margin="30">
-            <TextBlock Foreground="Black" Text="System Settings" 
+            <TextBlock Foreground="{DynamicResource Forground}" Text="System Settings" 
                         VerticalAlignment="Center" 
                         HorizontalAlignment="Left" 
                         FontSize="25" 
-                        FontWeight="Regular"/>
+                        FontWeight="SemiBold"/>
 
             <TextBlock TextWrapping="WrapWithOverflow" Text="Manage application preferences,hardware connections,and global system configurations." FontSize="12" Foreground="Gray" />
 
         </StackPanel>
 
         <Border Margin="20" CornerRadius="12"
-        BorderBrush="#E0E0E0"
+        BorderBrush="{DynamicResource BorderBrush}"
         BorderThickness="1"
         Padding="20"
-        Background="White">
+        Background="{DynamicResource Background}">
 
             <StackPanel>
 
@@ -31,17 +34,19 @@
                 <StackPanel Margin="0,0,0,15">
                     <TextBlock Text="Appearance"
                        FontSize="16"
-                       FontWeight="SemiBold"/>
+                              
+                               Foreground="{DynamicResource Forground}"
+                       FontWeight="Medium"/>
                     <TextBlock Text="Customize how the admin portal looks on your device."
                        FontSize="12"
                        Foreground="Gray"/>
                 </StackPanel>
 
                 <!-- Options -->
-                <UniformGrid Columns="3" HorizontalAlignment="Left">
+                <UniformGrid Columns="3" HorizontalAlignment="Center">
 
                     <!-- Light Mode -->
-                    <RadioButton x:Name="LightRadio" Checked="LightRadio_Checked" GroupName="Theme"
+                    <RadioButton Background="{DynamicResource Background}" x:Name="LightRadio" Checked="LightRadio_Checked" GroupName="Theme"
                         
                          Style="{StaticResource ThemeRadioButtonStyle}">
                         <StackPanel>
@@ -60,6 +65,7 @@
                                FontWeight="SemiBold"/>
                             <TextBlock Text="High contrast, bright interface ideal for daylight."
                                FontSize="11"
+                                       FontWeight="SemiBold"
                                Foreground="Gray"
                                TextWrapping="Wrap"
                                Width="180"/>
@@ -67,7 +73,7 @@
                     </RadioButton>
 
                     <!-- Dark Mode -->
-                    <RadioButton x:Name="DarkRadio" Checked="DarkRadio_Checked" GroupName="Theme"
+                    <RadioButton Background="{DynamicResource Background}" x:Name="DarkRadio" Checked="DarkRadio_Checked" GroupName="Theme"
                          Style="{StaticResource ThemeRadioButtonStyle}">
                         <StackPanel>
                             <Border Width="48" Height="48"
@@ -85,6 +91,7 @@
                                FontWeight="SemiBold"/>
                             <TextBlock Text="Easier on the eyes in low-light environments."
                                FontSize="11"
+                                       FontWeight="SemiBold"
                                Foreground="Gray"
                                TextWrapping="Wrap"
                                Width="180"/>
@@ -92,12 +99,18 @@
                     </RadioButton>
 
                     <!-- Default -->
-                    <RadioButton x:Name="SystemRadio" Checked="SystemRadio_Checked" GroupName="Theme"
+                    <RadioButton  x:Name="SystemRadio" Checked="SystemRadio_Checked" Background="{DynamicResource Background}" GroupName="Theme"
                          Style="{StaticResource ThemeRadioButtonStyle}">
+                      
                         <StackPanel>
                             <Border Width="48" Height="48"
-                            CornerRadius="24"
-                            Background="#EAEAEA">
+                            CornerRadius="24">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
+                                        <GradientStop Color="Black" Offset="0.5"/>
+                                        <GradientStop Color="White" Offset="0.5"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
                                 <TextBlock Text="💻"
                                    FontSize="18"
                                    VerticalAlignment="Center"
@@ -109,6 +122,7 @@
                                FontWeight="SemiBold"/>
                             <TextBlock Text="Sync with your operating system preferences."
                                FontSize="11"
+                                       FontWeight="SemiBold"
                                Foreground="Gray"
                                TextWrapping="Wrap"
                                Width="180"/>
@@ -117,6 +131,30 @@
 
                 </UniformGrid>
 
+            </StackPanel>
+        </Border>
+
+        <Border Background="{DynamicResource Background}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Margin="20" CornerRadius="12" >
+            <StackPanel Margin="20">
+                <TextBlock Text="System Time Synchronization"
+                       FontSize="16"
+                           Foreground="{DynamicResource Forground}"
+                       FontWeight="Medium"
+                       Margin="0,0,0,10"/>
+                <Button Click="SyncTime_Click" Width="100" Style="{DynamicResource ActionButton}" Content="Time Sync" />
+            </StackPanel>
+        </Border>
+
+        <Border Background="{DynamicResource Background}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Margin="20" CornerRadius="12">
+
+            <StackPanel Margin="20" >
+                <TextBlock  FontSize="16"
+                 FontWeight="Medium"
+                            Foreground="{DynamicResource Forground}"
+                 Margin="0,0,0,10" Text="System Status"/>
+                <TextBox Style="{DynamicResource TextBoxStyle}" x:Name="StatusBox" Height="150" IsReadOnly="True"
+         TextWrapping="Wrap"
+         VerticalScrollBarVisibility="Hidden" FontSize="12" Foreground="Gray" />
             </StackPanel>
         </Border>
 

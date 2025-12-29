@@ -16,12 +16,15 @@
     <None Remove="UI\DashbordS.png" />
     <None Remove="UI\Employee.png" />
     <None Remove="UI\EmployeeS.png" />
+    <None Remove="UI\Fingerprint_biometric_scan.gif" />
+    <None Remove="UI\LoginCharacterAnimation.gif" />
     <None Remove="UI\Login_D.png" />
     <None Remove="UI\Login_W.png" />
     <None Remove="UI\Report.png" />
     <None Remove="UI\ReportS.png" />
     <None Remove="UI\Settings.png" />
     <None Remove="UI\SettingsS.png" />
+    <None Remove="UI\time_tracker.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +49,9 @@
     <Content Include="UI\Fingerprint_biometric_scan.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="UI\LoginCharacterAnimation.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UI\Login_D.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -62,6 +68,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\SettingsS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\time_tracker.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

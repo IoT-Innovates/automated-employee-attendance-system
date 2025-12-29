@@ -8,7 +8,7 @@
         Width="420"
         Foreground="{DynamicResource Forground}"
         Height="220"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False">
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0" Opacity="0.505" BlurRadius="8"/>

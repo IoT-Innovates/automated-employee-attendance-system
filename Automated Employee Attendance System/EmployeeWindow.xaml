@@ -18,6 +18,46 @@
 
         <TabControl Style="{DynamicResource TabControl}">
             <TabItem Style="{DynamicResource TabItem}" Header="Employee">
+
+
+
+
+                <DataGrid x:Name="EmployeeGrid"
+Background="Transparent"
+RowBackground="White"
+AlternatingRowBackground="#f0f0f0"
+SnapsToDevicePixels="True"
+AutoGenerateColumns="False"
+ItemsSource="{Binding UpcomingBirthdays}"
+CanUserResizeColumns="False"
+ScrollViewer.CanContentScroll="True"
+ScrollViewer.VerticalScrollBarVisibility="Hidden"
+Height="500"
+CellStyle="{StaticResource DataGridCellStyle}"
+Style="{StaticResource DataGridStyle}"
+ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
+RowStyle="{StaticResource DataGridRowStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                        <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                        <DataGridTextColumn Header="NIC" Binding="{Binding nic}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+
+
+                        <DataGridTemplateColumn Header="Action" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete"
+                                            Style="{DynamicResource ActionButton}"
+                                     Click="DeleteEmployee_Click"
+                                    CommandParameter="{Binding}" />
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
             </TabItem>
             
             
@@ -31,7 +71,7 @@ VerticalAlignment="Center"
 HorizontalAlignment="Left" 
 FontSize="25" 
 
-FontWeight="Regular"/>
+FontWeight="Bold" Margin="0,0,0,10"/>
 
                         <TextBlock Text="Enter the employee details below and follow the intructions on the scanner interface ti register a new biometric ID" FontSize="12" Foreground="Gray" />
 
@@ -64,7 +104,7 @@ FontWeight="Regular"/>
                            Margin="0,0,8,0" Foreground="#FF0660FE"/>
                                             <TextBlock Text="Employee Details"
                            FontSize="18"
-                           FontWeight="Bold" Foreground="{DynamicResource Forground}"/>
+                           FontWeight="Medium" Foreground="{DynamicResource Forground}"/>
                                         </StackPanel>
 
                                         <!-- Row 1 -->
@@ -76,15 +116,13 @@ FontWeight="Regular"/>
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel>
-                                                <TextBlock Text="Employee ID" FontSize="12" Foreground="Gray"/>
-                                                <TextBox Style="{DynamicResource TextBoxStyle}"
-                            
-                            
-                            />
+                                                <TextBlock Text="Employee ID" FontSize="12" Foreground="Gray" Margin="0,0,0,5"/>
+                                                <TextBox x:Name="EmpId"  PreviewTextInput="EmpId_PreviewTextInput"
+         PreviewKeyDown="EmpId_PreviewKeyDown" Style="{DynamicResource TextBoxStyle}" />
                                             </StackPanel>
 
                                             <StackPanel Grid.Column="2">
-                                                <TextBlock Text="Department" FontSize="12" Foreground="Gray"/>
+                                                <TextBlock Text="Department" FontSize="12" Foreground="Gray" Margin="0,0,0,5"/>
                                                 <ComboBox Style="{DynamicResource ComboBoxFlatStyle}" Height="35"
                               Padding="5"
                               BorderBrush="#D1D5DB" >
@@ -104,15 +142,15 @@ FontWeight="Regular"/>
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel>
-                                                <TextBlock Text="First Name" FontSize="12" Foreground="Gray"/>
-                                                <TextBox Style="{DynamicResource TextBoxStyle}" 
+                                                <TextBlock Text="First Name" FontSize="12" Foreground="Gray" Margin="0,0,0,5"/>
+                                                <TextBox x:Name="EmpName" Style="{DynamicResource TextBoxStyle}" 
                              
                            />
                                             </StackPanel>
 
                                             <StackPanel Grid.Column="2">
-                                                <TextBlock Text="Last Name" FontSize="12" Foreground="Gray"/>
-                                                <TextBox Style="{DynamicResource TextBoxStyle}" 
+                                                <TextBlock Text="Last Name" FontSize="12" Foreground="Gray" Margin="0,0,0,4.5"/>
+                                                <TextBox x:Name="EmpNIC" Style="{DynamicResource TextBoxStyle}" 
                          
                             />
                                             </StackPanel>
@@ -123,7 +161,7 @@ FontWeight="Regular"/>
 
                                 <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
                                     <Button Width="100" Height="35" Content="Cancel" Margin="10,0,0,0" Style="{DynamicResource NavigationButtonStyle}"/>
-                                    <Button Width="100" Height="35" Margin="10,0,0,0" Content="Save Profile" Style="{DynamicResource ActionButton}"/>
+                                    <Button Click="AddEmployee_Click" Width="100" Height="35" Margin="10,0,0,0" Content="Add Employee" Style="{DynamicResource ActionButton}"/>
                                 </StackPanel>
                                 
                                 
@@ -155,7 +193,7 @@ FontWeight="Regular"/>
                                             <DockPanel >
                                                 <TextBlock HorizontalAlignment="Left" Foreground="{DynamicResource Forground}" Text="Scanner Interface"
                                FontSize="16"
-                               FontWeight="SemiBold"
+                               FontWeight="Medium"
                                DockPanel.Dock="Left"/>
 
                                                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"
@@ -207,11 +245,11 @@ FontWeight="Regular"/>
                                             <!-- Status Text -->
                                             <TextBlock Text="Waiting for sensor input..."
                            FontSize="15"
-                           FontWeight="SemiBold"
+                           FontWeight="Medium"
                            Margin="0,20,0,5"
                            HorizontalAlignment="Center"/>
 
-                                            <TextBlock Text="Place the employee's finger on the hardware sensor."
+                                            <TextBlock TextWrapping="WrapWithOverflow" Text="Place the employee's finger on the hardware sensor."
                            FontSize="12"
                            Foreground="Gray"
                            TextAlignment="Center"
@@ -226,13 +264,26 @@ FontWeight="Regular"/>
 
                                             <Button Height="44"
                         Style="{DynamicResource ActionButton}"
-                                                    Width="300"
-                        
-                        FontWeight="SemiBold"
-                        BorderThickness="0"
-                        Cursor="Hand"
-                                                    FontSize="15"
-                        Content="🔍  Start Scan"/>
+                                                    Click="ScanFingerprint_Click"
+                                                    Width="300">
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text=""
+FontFamily="Segoe MDL2 Assets"
+FontSize="18"
+VerticalAlignment="Center"/>
+
+                                                    <TextBlock Text="Scan Fingerprint" Margin="10,0,0,0"/>
+                                                </StackPanel>
+
+                                             
+
+                                            </Button>
+
+
+
+
+
                                         </Border>
 
                                     </Grid>
