@@ -97,11 +97,11 @@
 
                         <!-- Avatar -->
                         <Grid Width="66" Height="66">
-                            <Ellipse Fill="#F2C1AE"/>
-                            <Border
+                        <Image Source="/UI/logo.png"
+                               RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <Border
                 Width="30"
                 Height="30"
-                Background="#FFFFFF"
                 CornerRadius="4"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
