@@ -133,11 +133,7 @@
                 
 
                 <!-- Dashboard -->
-<<<<<<< HEAD
                 <RadioButton x:Name="Dashbord_Tab" Height="44" Width="260" Click="Dashboard_Click"
-=======
-                <RadioButton Click="Dashbord_Click" x:Name="Dashbord_Tab" Height="44" Width="260"
->>>>>>> ui
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE80F;"
@@ -155,7 +151,7 @@
 
                 <!-- Employee -->
                 <RadioButton x:Name="Employee_Tab" Height="44" Width="260"
-                
+                 IsChecked="True"
                  Click="EmployeeWindow_Click"
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">

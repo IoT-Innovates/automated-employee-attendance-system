@@ -1,18 +1,12 @@
 ﻿<UserControl x:Class="Automated_Employee_Attendance_System.DashboardWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-<<<<<<< HEAD
              Height="Auto" Width="Auto">
-=======
-             Height="Auto" Width="Auto"
-             SnapsToDevicePixels="True" >
->>>>>>> ui
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
             <!-- Header -->
-<<<<<<< HEAD
             <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
                 <TextBlock Text="Dashboard Overview"
                            FontSize="22"
@@ -21,114 +15,58 @@
                            VerticalAlignment="Bottom"
                            Foreground="Gray"/>
             </StackPanel>
-=======
-            <Grid Margin="0,0,0,20">
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="Dashboard Overview"
-               FontSize="22"
-               Foreground="{DynamicResource Forground}"
-               FontWeight="SemiBold"/>
-                    <TextBlock Text="   |   Today"
-               VerticalAlignment="Center"
-               Foreground="Gray"/>
-                </StackPanel>
-            
-
-                <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource Forground}" HorizontalAlignment="Right" x:Name="Time" Text="12:00AM" />
-            </Grid>
->>>>>>> ui
 
             <!-- Cards -->
             <UniformGrid Columns="4" Margin="0,0,0,20">
 
-<<<<<<< HEAD
                 <Border Background="#1E1E1E"
-=======
-                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource Background}"
->>>>>>> ui
                         CornerRadius="12"
                         Padding="16"
                         Margin="6">
                     <StackPanel>
                         <TextBlock Text="Total Employees" Foreground="Gray"/>
-<<<<<<< HEAD
                         <TextBlock Text="142" FontSize="26" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
 
                 <Border Background="#1E1E1E"
-=======
-                        <TextBlock  Foreground="{DynamicResource Forground}" Text="142" FontSize="26" FontWeight="Bold"/>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource Background}"
->>>>>>> ui
         CornerRadius="12"
         Padding="16"
         Margin="6">
                     <StackPanel>
                         <TextBlock Text="Present Today" Foreground="Gray"/>
-<<<<<<< HEAD
                         <TextBlock Text="120" FontSize="26" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
 
                 <Border Background="#1E1E1E"
-=======
-                        <TextBlock  Foreground="{DynamicResource Forground}" Text="120" FontSize="26" FontWeight="Bold"/>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource Background}"
->>>>>>> ui
         CornerRadius="12"
         Padding="16"
         Margin="6">
                     <StackPanel>
                         <TextBlock Text="Absent Today" Foreground="Gray"/>
-<<<<<<< HEAD
                         <TextBlock Text="12" FontSize="26" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
 
                 <Border Background="#1E1E1E"
-=======
-                        <TextBlock Foreground="{DynamicResource Forground}" Text="12" FontSize="26" FontWeight="Bold"/>
-                    </StackPanel>
-                </Border>
-
-                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource Background}"
->>>>>>> ui
         CornerRadius="12"
         Padding="16"
         Margin="6">
                     <StackPanel>
                         <TextBlock Text="Late Arrivals" Foreground="Gray"/>
-<<<<<<< HEAD
                         <TextBlock Text="10" FontSize="26" FontWeight="Bold"/>
-=======
-                        <TextBlock Foreground="{DynamicResource Forground}" Text="10" FontSize="26" FontWeight="Bold"/>
->>>>>>> ui
                     </StackPanel>
                 </Border>
 
             </UniformGrid>
 
             <!-- System Status -->
-<<<<<<< HEAD
             <Border CornerRadius="10" Background="#1E1E1E" Padding="16">
                 <StackPanel Orientation="Horizontal">
                     <Ellipse Width="10" Height="10" Fill="#35D499"/>
                     <TextBlock Text="  System Online (Arduino Connected)"
                                Foreground="White"/>
-=======
-            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="10" Background="{DynamicResource Background}" Padding="16">
-                <StackPanel Orientation="Horizontal">
-                    <Ellipse Width="10" Height="10" Fill="#35D499"/>
-                    <TextBlock x:Name="Status"
-                               Foreground="{DynamicResource Forground}" Margin="6,0,0,0"/>
->>>>>>> ui
                 </StackPanel>
             </Border>
 
