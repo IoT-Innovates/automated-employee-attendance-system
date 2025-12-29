@@ -38,7 +38,7 @@
 
                 <Border Grid.Column="1" Width="360"
                         Margin="15"
-      Padding="30"
+      Padding="10"
       Background="{DynamicResource Background}"
       CornerRadius="16"
       VerticalAlignment="Center"
@@ -57,17 +57,16 @@
                             <Button Click="Close_Click" Content="X" Style="{DynamicResource ActionButton}" Width="25" />
                         </StackPanel>
 
-                        <!-- Icon -->
-                        <Border Width="44" Height="44"
+                        <!-- logo -->
+                        <Border Width="64" Height="64"
               Background="{DynamicResource ContBackground}"
               CornerRadius="22"
               HorizontalAlignment="Center"
               Margin="0,0,0,16">
-                            <TextBlock Text="🔒"
-                     FontSize="20"
-                                       Foreground="{DynamicResource Forground}"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center"/>
+                            <Image
+                                Source="/UI/logo.png"
+                                Width="64"
+                                Height="64"/>
                         </Border>
 
                         <!-- Title -->
@@ -117,7 +116,7 @@
                         </Grid>
 
                         <!-- Login Button -->
-                        <Button Content="Login"
+                        <Button Content="Login" FontSize="19"
               Height="44"
                                 
                                 Click="Login_Click"
