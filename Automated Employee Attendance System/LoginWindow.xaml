@@ -119,6 +119,7 @@
                         <!-- Login Button -->
                         <Button Content="Login"
               Height="44"
+                                
                                 Click="Login_Click"
              Style="{DynamicResource ActionButton}"
                                 Width="150"
