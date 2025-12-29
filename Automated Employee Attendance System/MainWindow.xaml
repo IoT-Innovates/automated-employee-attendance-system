@@ -132,7 +132,7 @@
             <StackPanel Grid.Row="1">
 
                 <!-- Dashboard -->
-                <RadioButton x:Name="Dashbord_Tab" Height="44" Width="260"
+                <RadioButton x:Name="Dashbord_Tab" Height="44" Width="260" Click="Dashboard_Click"
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE80F;"
