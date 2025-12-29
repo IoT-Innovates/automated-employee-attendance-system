@@ -26,6 +26,7 @@
     <None Remove="UI\Settings.png" />
     <None Remove="UI\SettingsS.png" />
     <None Remove="UI\time_tracker.gif" />
+    <None Remove="UI\Wonder_Things.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,6 +73,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\time_tracker.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\Wonder_Things.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

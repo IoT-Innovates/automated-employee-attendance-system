@@ -42,6 +42,9 @@
         <Border Margin="5" x:Name="TitleBar" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" 
               Background="{DynamicResource Background}">
             <DockPanel>
+
+                <Image Source="/UI/logo.png"
+         RenderOptions.BitmapScalingMode="HighQuality"/>
                 <!-- App Title -->
                 <TextBlock Text="Attendance System"  Foreground="{DynamicResource Forground}"  VerticalAlignment="Center" Margin="8,0"/>
                 <!-- Control Panel -->
