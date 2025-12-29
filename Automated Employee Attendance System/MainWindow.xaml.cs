@@ -32,10 +32,6 @@ namespace Automated_Employee_Attendance_System
             LoadView(new DashboardWindow());
         }
 
-        private void Dashboard_Click(object sender, RoutedEventArgs e)
-        {
-            LoadView(new DashboardWindow());
-        }
 
 
 
@@ -58,6 +54,7 @@ namespace Automated_Employee_Attendance_System
 
         #region Navigation
 
+        private void Dashboard_Click(object sender, RoutedEventArgs e) => LoadView(new DashboardWindow());
         private void EmployeeWindow_Click(object sender, RoutedEventArgs e) => LoadView(new EmployeeWindow());
         private void Settings_Click(object sender, RoutedEventArgs e) => LoadView(new SettingsWindow());
 

@@ -20,9 +20,9 @@
             <TabItem Style="{DynamicResource TabItem}" Header="Employee">
 
 
+                <Border Background="{DynamicResource Background}" CornerRadius="15" Margin="15" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
 
-
-                <DataGrid x:Name="EmployeeGrid"
+                    <DataGrid x:Name="EmployeeGrid"
 Background="Transparent"
 RowBackground="White"
 AlternatingRowBackground="#f0f0f0"
@@ -37,27 +37,30 @@ CellStyle="{StaticResource DataGridCellStyle}"
 Style="{StaticResource DataGridStyle}"
 ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
 RowStyle="{StaticResource DataGridRowStyle}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                        <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                        <DataGridTextColumn Header="NIC" Binding="{Binding nic}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                            <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                            <DataGridTextColumn Header="NIC" Binding="{Binding nic}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
 
 
-                        <DataGridTemplateColumn Header="Action" Width="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="Delete"
+                            <DataGridTemplateColumn Header="Action" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete"
                                             Style="{DynamicResource ActionButton}"
                                      Click="DeleteEmployee_Click"
                                     CommandParameter="{Binding}" />
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
+                </Border>
+
+               
             </TabItem>
             
             
