@@ -6,6 +6,27 @@
              xmlns:local="clr-namespace:Automated_Employee_Attendance_System"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <Style x:Key="BigCalendarStyle" TargetType="Calendar">
+            <!-- Calendar popup size -->
+            <Setter Property="CalendarDayButtonStyle">
+                <Setter.Value>
+                    <Style TargetType="CalendarDayButton">
+                        <Setter Property="FontSize" Value="14"/>
+
+                        <!-- calender resize -->
+                        <Setter Property="Width" Value="33"/>
+                        <Setter Property="Height" Value="23"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+
+    </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
@@ -70,11 +91,7 @@
                     Margin="0,0,0,20"
                     CornerRadius="12">
                 <Grid Margin="0,20,0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    
 
 
                     <!-- Select Date -->
@@ -82,17 +99,26 @@
                         <TextBlock Text="Select Date"
                    Foreground="{DynamicResource Forground}"
                    FontSize="12"
+                                   HorizontalAlignment="Left"
                    Margin="0,0,0,8"/>
-                        <DatePicker Width="180"/>
+                        <DatePicker Width="280"
+                                    Height="32"
+                                    CalendarStyle="{StaticResource BigCalendarStyle}"
+                                    PreviewKeyDown="DatePicker_PreviewKeyDown"
+                                    Focusable="False"
+                        HorizontalAlignment="Left"/>
                     </StackPanel>
 
                     <!-- Filter Department -->
-                    <StackPanel Grid.Column="1">
+                    <StackPanel Grid.Column="0">
                         <TextBlock Text="Filter Department"
                    Foreground="{DynamicResource Forground}"
+                                   HorizontalAlignment="Center"
                    FontSize="12"
-                   Margin="0,0,0,8"/>
-                        <ComboBox Width="180">
+                   Margin="114,0,0,8"/>
+                        <ComboBox Width="280"
+                                  Height="20"
+                                  HorizontalAlignment="Center" Margin="300,0,0,0">
                             <ComboBoxItem Content="All Departments"/>
                             <ComboBoxItem Content="Engineering"/>
                             <ComboBoxItem Content="HR"/>

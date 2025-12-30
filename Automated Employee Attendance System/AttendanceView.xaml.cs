@@ -25,5 +25,10 @@ namespace Automated_Employee_Attendance_System
             InitializeComponent();
             DataContext = this;
         }
+
+        private void DatePicker_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
