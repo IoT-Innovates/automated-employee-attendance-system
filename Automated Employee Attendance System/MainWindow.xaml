@@ -188,6 +188,7 @@
 
                 <!-- Reports -->
                 <RadioButton x:Name="Report_Tab" Height="44" Width="260"
+                             Click="Report_Click"
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE9D2;"

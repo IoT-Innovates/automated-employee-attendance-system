@@ -60,6 +60,7 @@ namespace Automated_Employee_Attendance_System
 
         private void EmployeeWindow_Click(object sender, RoutedEventArgs e) => LoadView(new EmployeeWindow());
         private void Attendance_Click(object sender, RoutedEventArgs e) => LoadView(new AttendanceView());
+        private void Report_Click(object sender, RoutedEventArgs e) => LoadView(new ReportView());
         private void Settings_Click(object sender, RoutedEventArgs e) => LoadView(new SettingsWindow());
 
         private void LoadView(UserControl view)
