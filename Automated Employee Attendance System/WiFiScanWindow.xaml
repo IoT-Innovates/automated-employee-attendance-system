@@ -4,6 +4,7 @@
         Title="ESP WiFi Setup" 
         Height="450" 
         Width="500"
+		
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
@@ -78,8 +79,8 @@
                            FontWeight="Medium" 
                            Margin="0,10,0,5"/>
                 <PasswordBox x:Name="PasswordBox" 
-                             Height="35"
-                             Style="{DynamicResource PasswordBoxStyle}"/>
+                            
+                             />
             </StackPanel>
 
             <!-- Buttons -->
