@@ -165,5 +165,37 @@ namespace Automated_Employee_Attendance_System.Services
         {
             return currentDevice;
         }
+
+        public async Task<List<Attendance>> GetAttendanceRecords()
+        {
+            if (string.IsNullOrEmpty(espBaseUrl))
+            {
+                SystemServices.Log("ESP not connected - cannot fetch attendance");
+                return new List<Attendance>();
+            }
+
+            try
+            {
+                var res = await client.GetAsync($"{espBaseUrl}/attendance");
+
+                if (!res.IsSuccessStatusCode)
+                {
+                    SystemServices.Log("Failed to load attendance records");
+                    return new List<Attendance>();
+                }
+
+                var json = await res.Content.ReadAsStringAsync();
+                var list = JsonSerializer.Deserialize<List<Attendance>>(json);
+
+                SystemServices.Log($"Loaded {list?.Count ?? 0} attendance records from ESP");
+
+                return list ?? new List<Attendance>();
+            }
+            catch (Exception ex)
+            {
+                SystemServices.Log($"Load attendance error: {ex.Message}");
+                return new List<Attendance>();
+            }
+        }
     }
 }

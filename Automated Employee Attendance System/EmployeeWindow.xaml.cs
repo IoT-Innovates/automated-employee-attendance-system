@@ -161,30 +161,37 @@ namespace Automated_Employee_Attendance_System
             try
             {
                 // Create employee object with finger_id
-                var emp = new
+                var employee = new Employee
                 {
                     emp_id = EmpId.Text.Trim(),
-                    name = fullName,                 // ✅ AUTO SET
+                    name = fullName,
                     email = EmpEmail.Text.Trim(),
                     finger_id = tempFingerId.Value
                 };
 
-
-                var json = JsonSerializer.Serialize(emp);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var res = await client.PostAsync($"{espBaseUrl}/addEmployee", content);
-
-                if (!res.IsSuccessStatusCode)
+                // ✅ SAVE TO ESP (if connected)
+                if (!string.IsNullOrEmpty(espBaseUrl))
                 {
-                    var errorBody = await res.Content.ReadAsStringAsync();
-                    CustomMessageBox.Show($"Failed to save employee to SD card\n{errorBody}");
-                    SystemServices.Log($"Employee save failed: {errorBody}");
-                    return;
+                    var json = JsonSerializer.Serialize(employee);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var res = await client.PostAsync($"{espBaseUrl}/addEmployee", content);
+
+                    if (!res.IsSuccessStatusCode)
+                    {
+                        var errorBody = await res.Content.ReadAsStringAsync();
+                        CustomMessageBox.Show($"Failed to save employee to ESP\n{errorBody}");
+                        SystemServices.Log($"Employee save to ESP failed: {errorBody}");
+                        return;
+                    }
+
+                    SystemServices.Log($"Employee saved to ESP: {employee.name} (ID: {employee.emp_id})");
                 }
 
-                CustomMessageBox.Show($"Employee registered successfully!\n\nName: {emp.name}\nID: {emp.emp_id}\nFinger ID: {emp.finger_id}");
-                SystemServices.Log($"Employee added: {emp.name} (ID: {emp.emp_id}, Finger: {emp.finger_id})");
+                // ✅ SAVE TO DATABASE
+                DatabaseService.SaveEmployee(employee);
+
+                CustomMessageBox.Show($"Employee registered successfully!\n\nName: {employee.name}\nID: {employee.emp_id}\nFinger ID: {employee.finger_id}\n\n✓ Saved to database\n✓ Saved to ESP");
 
                 // Clear form and temp data
                 EmpId.Text = "";
@@ -214,7 +221,7 @@ namespace Automated_Employee_Attendance_System
             }
 
             var confirm = MessageBox.Show(
-                $"Delete employee {emp.name}?\n\nThis will also delete their fingerprint from the sensor.",
+                $"Delete employee {emp.name}?\n\nThis will also delete their fingerprint from the sensor and database.",
                 "Confirm Delete",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
@@ -224,33 +231,37 @@ namespace Automated_Employee_Attendance_System
 
             try
             {
-                var json = JsonSerializer.Serialize(new { id = emp.emp_id.Trim() });
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var res = await client.PostAsync($"{espBaseUrl}/deleteEmployee", content);
-                var body = await res.Content.ReadAsStringAsync();
-
-                if (!res.IsSuccessStatusCode)
+                // ✅ DELETE FROM ESP (if connected)
+                if (!string.IsNullOrEmpty(espBaseUrl))
                 {
-                    CustomMessageBox.Show($"Delete failed: {body}");
-                    SystemServices.Log($"Delete failed: {body}");
-                    return;
+                    var json = JsonSerializer.Serialize(new { id = emp.emp_id.Trim() });
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var res = await client.PostAsync($"{espBaseUrl}/deleteEmployee", content);
+                    var body = await res.Content.ReadAsStringAsync();
+
+                    if (res.IsSuccessStatusCode)
+                    {
+                        using var doc = JsonDocument.Parse(body);
+                        var status = doc.RootElement.GetProperty("status").GetString();
+
+                        if (status == "ok")
+                        {
+                            SystemServices.Log($"Employee deleted from ESP: {emp.name}");
+                        }
+                    }
+                    else
+                    {
+                        SystemServices.Log($"ESP delete failed (continuing with database): {body}");
+                    }
                 }
 
-                using var doc = JsonDocument.Parse(body);
-                var status = doc.RootElement.GetProperty("status").GetString();
+                // ✅ DELETE FROM DATABASE
+                DatabaseService.DeleteEmployee(emp.emp_id);
 
-                if (status == "ok")
-                {
-                    CustomMessageBox.Show($"Employee deleted successfully\n\nName: {emp.name}");
-                    SystemServices.Log($"Deleted employee: {emp.name} (ID: {emp.emp_id})");
-                    await LoadEmployees();
-                }
-                else
-                {
-                    CustomMessageBox.Show($"Delete failed: {status}");
-                    SystemServices.Log($"Delete failed: {status}");
-                }
+                CustomMessageBox.Show($"Employee deleted successfully\n\nName: {emp.name}\n\n✓ Removed from database\n✓ Removed from ESP");
+
+                await LoadEmployees();
             }
             catch (Exception ex)
             {
@@ -262,30 +273,27 @@ namespace Automated_Employee_Attendance_System
 
         public async Task LoadEmployees()
         {
-            if (string.IsNullOrEmpty(espBaseUrl))
-                return;
-
             try
             {
-                var res = await client.GetAsync($"{espBaseUrl}/employees");
+                // ✅ LOAD ONLY FROM DATABASE (no ESP sync)
+                var employees = DatabaseService.GetAllEmployees();
 
-                if (!res.IsSuccessStatusCode)
+                SystemServices.Log($"Loaded {employees.Count} employees from database");
+
+                // ✅ Update UI on main thread
+                await Dispatcher.InvokeAsync(() =>
                 {
-                    CustomMessageBox.Show("Failed to load employees");
-                    SystemServices.Log("Failed to load employees");
-                    return;
-                }
-
-                var json = await res.Content.ReadAsStringAsync();
-                var list = JsonSerializer.Deserialize<List<Employee>>(json);
-
-                SystemServices.Log($"Loaded {list?.Count ?? 0} employees from ESP");
-
-                EmployeeGrid.ItemsSource = list;
+                    EmployeeGrid.ItemsSource = employees;
+                });
             }
             catch (Exception ex)
             {
                 SystemServices.Log($"Load employees error: {ex.Message}");
+
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    EmployeeGrid.ItemsSource = new List<Employee>();
+                });
             }
         }
 

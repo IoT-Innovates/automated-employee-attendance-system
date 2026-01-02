@@ -14,7 +14,7 @@
                 <!-- Header -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
                     <Border Background="{DynamicResource ContBackground}">
-                        <TextBlock Text="Dashboard Overview"
+                        <TextBlock Text="Attendance Overview"
                              Foreground="{DynamicResource Forground}"
                      FontSize="22"
                      FontWeight="SemiBold"/>
@@ -73,8 +73,6 @@
                   CornerRadius="12">
                     <Grid Margin="0,20,0,10">
 
-
-
                         <!-- Select Date -->
                         <StackPanel Grid.Column="0" Margin="10,0,15,0">
                             <TextBlock Text="Select Date"
@@ -102,6 +100,15 @@
                                 <ComboBoxItem Content="HR"/>
                             </ComboBox>
                         </StackPanel>
+
+                        <!-- Refresh Button -->
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,20,0">
+                            <Button Content="🔄 Refresh" 
+                                    Click="RefreshAttendance_Click"
+                                    Style="{StaticResource ActionButton}"
+                                    Width="120"
+                                    Height="35"/>
+                        </StackPanel>
                     </Grid>
 
                 </Border>
@@ -124,13 +131,12 @@
                  Margin="6,0,0,12"/>
 
                         <!-- TABLE -->
-                        <DataGrid x:Name="EmployeeGrid"
+                        <DataGrid x:Name="AttendanceGrid"
 Background="Transparent"
 RowBackground="White"
 AlternatingRowBackground="#f0f0f0"
 SnapsToDevicePixels="True"
 AutoGenerateColumns="False"
-ItemsSource="{Binding UpcomingBirthdays}"
 CanUserResizeColumns="False"
 ScrollViewer.CanContentScroll="True"
 ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -140,14 +146,10 @@ Style="{StaticResource DataGridStyle}"
 ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
 RowStyle="{StaticResource DataGridRowStyle}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding emp_id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                                <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                                <DataGridTextColumn Header="Check In" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                                <DataGridTextColumn Header="Check Out" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                               
-
-                                
-
+                                <DataGridTextColumn Header="Employee ID" Binding="{Binding emp_id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                                <DataGridTextColumn Header="Finger ID" Binding="{Binding finger_id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                                <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                                <DataGridTextColumn Header="Time" Binding="{Binding time}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -156,6 +158,6 @@ RowStyle="{StaticResource DataGridRowStyle}">
             </StackPanel>
         </ScrollViewer>
     </Grid>
-  
+
 
 </UserControl>

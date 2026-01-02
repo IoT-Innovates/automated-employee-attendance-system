@@ -28,7 +28,6 @@ RowBackground="White"
 AlternatingRowBackground="#f0f0f0"
 SnapsToDevicePixels="True"
 AutoGenerateColumns="False"
-ItemsSource="{Binding UpcomingBirthdays}"
 CanUserResizeColumns="False"
 ScrollViewer.CanContentScroll="True"
 ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -60,10 +59,10 @@ RowStyle="{StaticResource DataGridRowStyle}">
 
                 </Border>
 
-               
+
             </TabItem>
-            
-            
+
+
             <TabItem Width="auto"  Style="{DynamicResource TabItem}" Header="  >  Enroll Fingerprint">
 
                 <StackPanel>
@@ -86,8 +85,8 @@ RowStyle="{StaticResource DataGridRowStyle}">
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
-                            
-                            
+
+
                             <StackPanel Margin="30" Grid.Column="0">
 
 
@@ -158,8 +157,8 @@ RowStyle="{StaticResource DataGridRowStyle}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition/>
-                                           
-                                               
+
+
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel>
@@ -174,12 +173,12 @@ RowStyle="{StaticResource DataGridRowStyle}">
                                 </Border>
 
                                 <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
-                                    <Button Width="100" Height="35" Content="Cancel" Margin="10,0,0,0" Style="{DynamicResource NavigationButtonStyle}"/>
+                                    <Button Click="CancelRegistration_Click" Width="100" Height="35" Content="Cancel" Margin="10,0,0,0" Style="{DynamicResource NavigationButtonStyle}"/>
                                     <Button Click="AddEmployee_Click" Width="100" Height="35" Margin="10,0,0,0" Content="Add Employee" Style="{DynamicResource ActionButton}"/>
                                 </StackPanel>
-                                
-                                
-                                
+
+
+
                             </StackPanel>
 
 
@@ -282,7 +281,7 @@ RowStyle="{StaticResource DataGridRowStyle}">
                                                     Width="300">
 
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text=""
+                                                    <TextBlock Text=""
 FontFamily="Segoe MDL2 Assets"
 FontSize="18"
 VerticalAlignment="Center"/>
@@ -290,7 +289,7 @@ VerticalAlignment="Center"/>
                                                     <TextBlock Text="Scan Fingerprint" Margin="10,0,0,0"/>
                                                 </StackPanel>
 
-                                             
+
 
                                             </Button>
 
@@ -302,22 +301,22 @@ VerticalAlignment="Center"/>
 
                                     </Grid>
                                 </Border>
-                                
+
                             </StackPanel>
                         </Grid>
                     </StackPanel>
-                   
+
 
                 </StackPanel>
 
-                
-               
+
+
 
             </TabItem>
-            
-            
-            
+
+
+
         </TabControl>
-        
+
     </Grid>
 </UserControl>
