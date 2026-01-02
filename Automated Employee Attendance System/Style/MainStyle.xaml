@@ -925,6 +925,88 @@
 
 
 
+    <Style x:Key="ModernListBoxStyle" TargetType="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+
+                <!-- 🔹 ListBoxItem Style -->
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="0,4"/>
+                    <Setter Property="Padding" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Foreground" Value="{DynamicResource Forground}"/>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="Border"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                    <ContentPresenter VerticalAlignment="Center"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+
+                                    <!-- Hover -->
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Border"
+                                            Property="Background"
+                                            Value="{DynamicResource IsMouseOver}"/>
+                                        
+                                        
+                                    </Trigger>
+
+                                    <!-- Selected -->
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border"
+                                            Property="Background"
+                                            Value="#0660FE"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        
+                                    </Trigger>
+
+                                    <!-- Selected + Hover -->
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsSelected" Value="True"/>
+                                            <Condition Property="IsMouseOver" Value="True"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="Border"
+                                            Property="Background"
+                                            Value="#FF1469FF"/>
+                                    </MultiTrigger>
+
+                                    <!-- Disabled -->
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="Border"
+                                            Property="Opacity"
+                                            Value="0.5"/>
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
 
 
 

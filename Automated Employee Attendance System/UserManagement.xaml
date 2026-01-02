@@ -5,8 +5,180 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Automated_Employee_Attendance_System"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             FontFamily="{StaticResource CustomFont}"
+             Foreground="{DynamicResource Forground}"
+             >
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Section -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="User Management" FontSize="22"
+FontWeight="SemiBold"
+                       />
+            <TextBlock Text="Manage users, set credentials and access permissions" 
+                       FontSize="14"  
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Users List -->
+            <Border Grid.Column="0" Background="{DynamicResource Background}" 
+                    CornerRadius="10" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="15">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Users List" FontSize="18" FontWeight="SemiBold"/>
+
+                    <Button x:Name="AddUserButton" Margin="10" Grid.Row="1" Content="+ Add New User" 
+        Click="AddUserButton_Click"
+        Style="{DynamicResource ActionButton}" Width="120"/>
+
+                    <ListView Style="{DynamicResource ModernListBoxStyle}" x:Name="UsersListView" Grid.Row="2" Margin="0,15,0,15"
+                              SelectionChanged="UsersListView_SelectionChanged"
+                              Background="Transparent" BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{DynamicResource HoverBackground}" 
+                                        CornerRadius="5" Padding="10" Margin="0,2">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Username, Mode=OneWay}" 
+                                                   FontWeight="SemiBold" FontSize="14"
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                        <TextBlock FontSize="11" Margin="0,2,0,0"
+                                                   Foreground="{DynamicResource SecondaryTextColor}">
+                                            <Run Text="Access: "/>
+                                            <Run Text="{Binding AccessSummary, Mode=OneWay}"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    
+                </Grid>
+            </Border>
+
+            <!-- User Details/Edit Panel -->
+            <Border Grid.Column="2" Background="{DynamicResource Background}" 
+                    CornerRadius="10" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="20">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel x:Name="UserDetailsPanel">
+                        <TextBlock x:Name="PanelTitle" Text="User Details" 
+                                   FontSize="18" FontWeight="SemiBold" 
+                                   />
+
+                        <!-- Username -->
+                        <TextBlock Text="Username" Margin="0,20,0,5" 
+                                   />
+                        <TextBox Style="{DynamicResource TextBoxStyle}" x:Name="UsernameTextBox" 
+                                 />
+
+                        <!-- Password -->
+                        <TextBlock Text="Password" Margin="0,15,0,5" 
+                                   />
+                        <PasswordBox x:Name="PasswordBox" 
+                                     />
+
+                        <!-- Confirm Password -->
+                        <TextBlock Text="Confirm Password" Margin="0,15,0,5" 
+                                   />
+                        <PasswordBox x:Name="ConfirmPasswordBox" 
+                                     />
+
+                        <!-- Access Permissions -->
+                        <TextBlock Text="Tab Access Permissions" Margin="0,25,0,10" 
+                                   FontSize="16" FontWeight="SemiBold"
+                                   />
+
+                        <Border Background="{DynamicResource HoverBackground}" 
+                                CornerRadius="8" Padding="15">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <CheckBox x:Name="DashboardCheckBox" 
+                  VerticalAlignment="Center"
+                  FontSize="14"/>
+                                    <TextBlock Text="Dashboard" 
+                   VerticalAlignment="Center"
+                   Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <CheckBox x:Name="EmployeeCheckBox" 
+                  VerticalAlignment="Center"
+                  FontSize="14"/>
+                                    <TextBlock Text="Employee Management" 
+                   VerticalAlignment="Center"
+                   Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <CheckBox x:Name="AttendanceCheckBox" 
+                  VerticalAlignment="Center"
+                  FontSize="14"/>
+                                    <TextBlock Text="Attendance" 
+                   VerticalAlignment="Center"
+                   Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <CheckBox x:Name="ReportCheckBox" 
+                  VerticalAlignment="Center"
+                  FontSize="14"/>
+                                    <TextBlock Text="Reports / User Management" 
+                   VerticalAlignment="Center"
+                   Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,5">
+                                    <CheckBox x:Name="SettingsCheckBox" 
+                  VerticalAlignment="Center"
+                  FontSize="14"/>
+                                    <TextBlock Text="Settings" 
+                   VerticalAlignment="Center"
+                   Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Action Buttons -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                            <Button x:Name="SaveButton" Content="Save User" Width="120" 
+                                     Margin="0,0,10,0" Click="SaveButton_Click"
+                                    Style="{DynamicResource ActionButton}"/>
+                            <Button x:Name="DeleteButton" Content="Delete User" Width="120" 
+                                     Margin="0,0,10,0" Click="DeleteButton_Click"
+                                    Style="{DynamicResource DeleteActionButton}" />
+                            <Button x:Name="CancelButton" Content="Cancel" Width="120" 
+                                    Click="CancelButton_Click"
+                                    Style="{DynamicResource NavigationButtonStyle}"/>
+                        </StackPanel>
+
+                        <!-- Empty State Message -->
+                        <TextBlock x:Name="EmptyStateMessage" 
+                                   Text="Select a user from the list or add a new user to get started." 
+                                   TextWrapping="Wrap" Margin="0,20,0,0"
+                                   
+                                   HorizontalAlignment="Center" TextAlignment="Center"
+                                   Visibility="Visible"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

@@ -51,7 +51,7 @@ namespace Automated_Employee_Attendance_System
             Dashbord_Tab.Visibility = _user.Dashbord ? Visibility.Visible : Visibility.Collapsed;
             Employee_Tab.Visibility = _user.Employee ? Visibility.Visible : Visibility.Collapsed;
             Attendance_Tab.Visibility = _user.Attendance ? Visibility.Visible : Visibility.Collapsed;
-            Report_Tab.Visibility = _user.Report ? Visibility.Visible : Visibility.Collapsed;
+            UserManagement_Tab.Visibility = _user.Report ? Visibility.Visible : Visibility.Collapsed;
             Settings_Tab.Visibility = _user.Settings ? Visibility.Visible : Visibility.Collapsed;
           
         }
@@ -107,7 +107,7 @@ namespace Automated_Employee_Attendance_System
         private void Dashboard_Click(object sender, RoutedEventArgs e) => LoadView(new DashboardWindow());
         private void EmployeeWindow_Click(object sender, RoutedEventArgs e) => LoadView(new EmployeeWindow());
         private void Attendance_Click(object sender, RoutedEventArgs e) => LoadView(new AttendanceView());
-        private void Report_Click(object sender, RoutedEventArgs e) => LoadView(new ReportView());
+        private void Report_Click(object sender, RoutedEventArgs e) => LoadView(new UserManagement());
         private void Settings_Click(object sender, RoutedEventArgs e) => LoadView(new SettingsWindow());
 
         private void LoadView(UserControl view)
