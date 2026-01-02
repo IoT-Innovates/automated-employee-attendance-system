@@ -447,6 +447,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="5"
+                                Height="35"
                                 Padding="{TemplateBinding Padding}">
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
@@ -503,7 +504,7 @@
                 <ControlTemplate TargetType="PasswordBox">
                     <Border CornerRadius="5" 
                             VerticalAlignment="Center"
-                            Height="40"
+                            Height="35"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
