@@ -175,7 +175,7 @@
                         <StackPanel>
                             <TextBlock Foreground="{DynamicResource Forground}" FontWeight="SemiBold" Text="Email:" Padding="0,3,0,3"  />
                             <TextBox x:Name="EmailBox"  Style="{DynamicResource TextBoxStyle}" Height="35" Margin="0,0,0,10"/>
-                            <TextBlock Text="Password:" FontWeight="SemiBold"  Padding="0,0,0,3"/>
+                            <TextBlock Text="Password:" Foreground="{DynamicResource Forground}" FontWeight="SemiBold"  Padding="0,0,0,3"/>
                             <PasswordBox x:Name="AppPasswordBox"  Margin="0,0,0,10"/>
                         </StackPanel>
 

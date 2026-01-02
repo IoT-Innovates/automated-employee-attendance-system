@@ -1,12 +1,15 @@
 ﻿using Automated_Employee_Attendance_System.Models;
 using Automated_Employee_Attendance_System.Services;
+using Hardcodet.Wpf.TaskbarNotification;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using XamlAnimatedGif;
+using System.Drawing;
 
 namespace Automated_Employee_Attendance_System
 {
@@ -15,6 +18,7 @@ namespace Automated_Employee_Attendance_System
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TaskbarIcon _trayIcon;
         private User _user;
         private readonly ESP_Services _esp = new ESP_Services();
 
@@ -32,6 +36,7 @@ namespace Automated_Employee_Attendance_System
             LoadView(new DashboardWindow());
 
             Loaded += async (_, _) => await _esp.ConnectToSavedDevice();
+            SetupTrayIcon();
         }
 
 
@@ -55,6 +60,47 @@ namespace Automated_Employee_Attendance_System
 
 
 
+        private void SetupTrayIcon()
+        {
+            _trayIcon = new TaskbarIcon();
+            string iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "UI", "logo.ico");
+            _trayIcon.Icon = new Icon(iconPath);
+            _trayIcon.ToolTipText = "My WPF App";
+
+            _trayIcon.TrayLeftMouseUp += (s, e) =>
+            {
+                this.Show();
+                this.WindowState = WindowState.Normal;
+                this.Activate();
+            };
+
+            var contextMenu = new ContextMenu();
+
+            var menuOpen = new MenuItem { Header = "Open" };
+            menuOpen.Click += (s, e) => ShowWindow();
+
+
+            var menuExit = new MenuItem { Header = "Exit" };
+            menuExit.Click += (s, e) =>
+            {
+                _trayIcon.Dispose();
+                Application.Current.Shutdown();
+            };
+
+            contextMenu.Items.Add(menuOpen);
+            contextMenu.Items.Add(new Separator());
+            contextMenu.Items.Add(menuExit);
+
+            _trayIcon.ContextMenu = contextMenu;
+        }
+
+
+        private void ShowWindow()
+        {
+            this.Show();
+            this.WindowState = WindowState.Normal;
+            this.Activate();
+        }
 
         #region Navigation
 
@@ -135,7 +181,7 @@ namespace Automated_Employee_Attendance_System
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             
-            Close();
+            Hide();
         }
 
         #endregion

@@ -1,9 +1,10 @@
-﻿using Automated_Employee_Attendance_System.Services;
+﻿using Automated_Employee_Attendance_System.Models;
+using Automated_Employee_Attendance_System.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,8 +13,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using XamlAnimatedGif;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+using XamlAnimatedGif;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Automated_Employee_Attendance_System
 {
@@ -114,6 +117,7 @@ namespace Automated_Employee_Attendance_System
 
             new MainWindow(user).Show();
             SystemServices.Log($"Login {UserNameText}");
+            NotificationHelper.ShowNotification("Attendance System!","System Login Sucsess!");
             Close();
         }
     }
