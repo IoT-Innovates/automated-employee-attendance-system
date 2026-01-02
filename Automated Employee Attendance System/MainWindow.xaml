@@ -154,7 +154,7 @@
 
                 <!-- Employee -->
                 <RadioButton x:Name="Employee_Tab" Height="44" Width="260"
-                 IsChecked="True"
+                
                  Click="EmployeeWindow_Click"
                  Style="{StaticResource SelectableRadioButtonStyle}">
                     <StackPanel Orientation="Horizontal">

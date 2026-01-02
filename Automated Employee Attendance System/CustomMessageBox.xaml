@@ -6,13 +6,16 @@
         AllowsTransparency="True"
         Background="Transparent"
         Width="420"
+        MinHeight="100"
+        MaxHeight="200"
         Foreground="{DynamicResource Forground}"
-        Height="auto"
+        
         WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False">
     <Window.Effect>
         <DropShadowEffect ShadowDepth="0" Opacity="0.505" BlurRadius="8"/>
     </Window.Effect>
+
     <Border CornerRadius="14"
            Margin="10"
             Background="{DynamicResource Background}"
