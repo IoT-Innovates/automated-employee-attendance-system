@@ -80,6 +80,17 @@ namespace Automated_Employee_Attendance_System
                 OnPropertyChanged();
             }
         }
+        // Device connection state (FOR GIF SWITCH)
+        private bool _isDeviceConnected;
+        public bool IsDeviceConnected
+        {
+            get => _isDeviceConnected;
+            set
+            {
+                _isDeviceConnected = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DashboardWindow()
         {
@@ -236,18 +247,21 @@ namespace Automated_Employee_Attendance_System
                 {
                     SystemStatusText = $"Connected: {device.Name}";
                     SystemStatusColor = Brushes.LimeGreen;
+                    IsDeviceConnected = true;
                     SystemServices.Log($"System status: Connected to {device.Name}");
                 }
                 else if (device != null)
                 {
                     SystemStatusText = "Device Not Reachable";
                     SystemStatusColor = Brushes.Orange;
+                    IsDeviceConnected = false;
                     SystemServices.Log("System status: Device not reachable");
                 }
                 else
                 {
                     SystemStatusText = "No Device Configured";
                     SystemStatusColor = Brushes.Red;
+                    IsDeviceConnected = false;
                     SystemServices.Log("System status: No device configured");
                 }
             }

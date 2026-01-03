@@ -14,8 +14,12 @@
   <ItemGroup>
     <None Remove="UI\Attendance.png" />
     <None Remove="UI\AttendanceS.png" />
+    <None Remove="UI\dash.gif" />
     <None Remove="UI\Dashbord.png" />
     <None Remove="UI\DashbordS.png" />
+    <None Remove="UI\dashconnect.gif" />
+    <None Remove="UI\dashconnected.gif" />
+    <None Remove="UI\dashload.gif" />
     <None Remove="UI\Employee.png" />
     <None Remove="UI\EmployeeS.png" />
     <None Remove="UI\Fingerprint_biometric_scan.gif" />
@@ -99,10 +103,20 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="System.Data.SQLite" Version="2.0.2" />
     <PackageReference Include="System.IO.Ports" Version="10.0.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
     <PackageReference Include="XamlAnimatedGif" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="UI\dashconnect.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UI\dashconnected.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="UI\dashload.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="UI\logo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              Height="Auto" Width="Auto"
              FontFamily="{StaticResource CustomFont}"
              Foreground="{DynamicResource Forground}">
@@ -70,7 +71,7 @@
                         BorderThickness="1"
             CornerRadius="14"
             Padding="16"
-            Margin="0,0,16,0">
+            Margin="0,0,54,0">
 
                     <StackPanel>
                         <TextBlock Text="Attendance Overview (Last 7 Days)"
@@ -109,7 +110,7 @@
 
                 <!-- RIGHT: System Status Card -->
                 <Border Grid.Column="1"
-                        Margin="0,0,0,150"
+                        Margin="-40,0,6,0"
             Background="{DynamicResource Background}"
                         BorderBrush="{DynamicResource BorderBrush}"
                         BorderThickness="1"
@@ -138,6 +139,48 @@
                             </StackPanel>
 
                         </StackPanel>
+                        <StackPanel HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="17,0,0,0">
+
+                            <!-- 🔄 NOT REACHABLE / LOADING GIF -->
+                            <Image Width="180"
+                                   Margin="-45,40,0,0"
+           RenderOptions.BitmapScalingMode="HighQuality"
+           SnapsToDevicePixels="True"
+           gif:ImageBehavior.AnimatedSource="/UI/dashconnect.gif">
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsDeviceConnected}" Value="False">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+
+                            <!-- ✅ CONNECTED GIF -->
+                            <Image Width="180"
+           RenderOptions.BitmapScalingMode="HighQuality"
+           SnapsToDevicePixels="True"
+           gif:ImageBehavior.AnimatedSource="/UI/dashconnected.gif">
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsDeviceConnected}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+
+                        </StackPanel>
+
+
 
                     </StackPanel>
                 </Border>
