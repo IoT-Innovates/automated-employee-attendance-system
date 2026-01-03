@@ -119,14 +119,14 @@
                          VerticalContentAlignment="Center"
                          Margin="0,0,10,0"/>
 
-                                <Button Content="🔍 Search"
+                                <Button Content=" Search"
                         Click="SearchAttendance_Click"
                         Style="{StaticResource ActionButton}"
                         Width="120"
                         Height="35"
                         Margin="0,0,10,0"/>
 
-                                <Button Content="🧹 Clear Filters"
+                                <Button Content="⟲ Clear Filters"
                         Click="ClearFilters_Click"
                         Style="{StaticResource ActionButton}"
                         Width="120"
