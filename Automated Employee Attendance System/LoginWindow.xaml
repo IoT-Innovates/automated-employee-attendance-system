@@ -15,6 +15,7 @@
         Title="LoginWindow" Height="500"  Width="800">
 
 
+
     <Grid>
 
         <Border CornerRadius="15" Background="{DynamicResource ContBackground}">
