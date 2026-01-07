@@ -56,17 +56,32 @@ namespace Automated_Employee_Attendance_System
                 Dispatcher.Invoke(() =>
                 {
                     AnimationBehavior.SetSourceUri(MyGifImage, gifUri);
+                    // Don't start the animation immediately - stop it initially
                     AnimationBehavior.SetRepeatBehavior(MyGifImage, System.Windows.Media.Animation.RepeatBehavior.Forever);
+                    StopGifAnimation();
                 });
             });
         }
+
+        private void StartGifAnimation()
+        {
+            // AnimationBehavior does not have SetIsPaused, so use AutoStart property
+            AnimationBehavior.SetAutoStart(MyGifImage, true);
+        }
+
+        private void StopGifAnimation()
+        {
+            // AnimationBehavior does not have SetIsPaused, so use AutoStart property
+            AnimationBehavior.SetAutoStart(MyGifImage, false);
+        }
+
 
 
         private async void ScanFingerprint_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(espBaseUrl))
             {
-                CustomMessageBox.Show("ESP not connected");
+                Fingerinfo.Text = "ESP not connected. Please check the device connection.";
                 return;
             }
 
@@ -75,11 +90,13 @@ namespace Automated_Employee_Attendance_System
                  string.IsNullOrWhiteSpace(EmpLastName.Text) ||
                  string.IsNullOrWhiteSpace(EmpEmail.Text))
             {
-                CustomMessageBox.Show("Please enter Employee ID, Name, and NIC first");
+                Fingerinfo.Text = "Please enter Employee ID, Name, and Email first before scanning fingerprint.";
                 return;
             }
 
-            CustomMessageBox.Show("Place finger on sensor (scan 1/2)...");
+            // Start GIF animation and update info text
+            StartGifAnimation();
+            Fingerinfo.Text = "Scanning in progress... Place finger on sensor and hold steady.";
 
             try
             {
@@ -95,7 +112,8 @@ namespace Automated_Employee_Attendance_System
 
                     if (!res.IsSuccessStatusCode)
                     {
-                        CustomMessageBox.Show("Fingerprint enrollment failed");
+                        StopGifAnimation();
+                        Fingerinfo.Text = "Fingerprint enrollment failed. Please try again.";
                         SystemServices.Log("Fingerprint enrollment failed");
 
                         // Clear temp data on failure
@@ -111,13 +129,15 @@ namespace Automated_Employee_Attendance_System
                     {
                         tempFingerId = fingerIdElement.GetInt32();
 
-                        CustomMessageBox.Show($"Fingerprint enrolled successfully!\nFinger ID: {tempFingerId}\n\nNow click 'Add Employee' to save.");
+                        StopGifAnimation();
+                        Fingerinfo.Text = $"✅ Fingerprint enrolled successfully!\n\nFinger ID: {tempFingerId}\nEmployee: {EmpFirstName.Text} {EmpLastName.Text}\n\nNow click 'Add Employee' to save the registration.";
                         SystemServices.Log($"Fingerprint enrolled with ID: {tempFingerId}");
                     }
                     else
                     {
                         tempFingerId = null;
-                        CustomMessageBox.Show("Invalid response from ESP - no finger_id returned");
+                        StopGifAnimation();
+                        Fingerinfo.Text = "❌ Invalid response from ESP - no finger_id returned. Please try again.";
                         SystemServices.Log($"ESP Response: {json}");
                     }
                 }
@@ -125,13 +145,15 @@ namespace Automated_Employee_Attendance_System
             catch (TaskCanceledException)
             {
                 tempFingerId = null;
-                CustomMessageBox.Show("Fingerprint scan timeout!\n\nPlease ensure:\n- Finger is placed on sensor\n- Sensor is working properly\n- ESP is responding");
+                StopGifAnimation();
+                Fingerinfo.Text = "⏱️ Fingerprint scan timeout!\n\nPlease ensure:\n• Finger is placed correctly on sensor\n• Sensor is working properly\n• ESP is responding\n\nTry scanning again.";
                 SystemServices.Log("Fingerprint scan timeout");
             }
             catch (Exception ex)
             {
                 tempFingerId = null;
-                CustomMessageBox.Show($"Error: {ex.Message}");
+                StopGifAnimation();
+                Fingerinfo.Text = $"❌ Scan Error: {ex.Message}\n\nPlease check the device connection and try again.";
                 SystemServices.Log($"Fingerprint scan error: {ex.Message}");
             }
         }
@@ -199,6 +221,9 @@ namespace Automated_Employee_Attendance_System
                 EmpLastName.Text = "";
                 EmpEmail.Text = "";
                 tempFingerId = null;
+
+                // Reset fingerprint info text
+                Fingerinfo.Text = "Place the employee's finger on the hardware sensor.";
 
                 // Reload employee list
                 await LoadEmployees();
@@ -270,7 +295,7 @@ namespace Automated_Employee_Attendance_System
                 DatabaseService.DeleteEmployee(emp.emp_id);
 
                 // Show appropriate success message based on ESP connection
-                string message = deletedFromESP 
+                string message = deletedFromESP
                     ? $"Employee deleted successfully\n\nName: {emp.name}\n\n✓ Removed from database\n✓ Removed from ESP"
                     : $"Employee deleted from database\n\nName: {emp.name}\n\n✓ Removed from database\n⚠ ESP not connected - fingerprint remains on sensor";
 
@@ -357,6 +382,9 @@ namespace Automated_Employee_Attendance_System
             EmpEmail.Text = "";
             tempFingerId = null;
 
+            // Reset fingerprint info text and stop animation
+            StopGifAnimation();
+            Fingerinfo.Text = "Place the employee's finger on the hardware sensor.";
 
             CustomMessageBox.Show("Registration cancelled");
             SystemServices.Log("Employee registration cancelled");

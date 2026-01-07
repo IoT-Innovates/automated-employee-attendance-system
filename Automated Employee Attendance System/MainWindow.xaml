@@ -43,7 +43,7 @@
               Background="{DynamicResource Background}">
             <DockPanel>
 
-                <Image Source="/UI/logo.png"
+                <Image Source="/UI/logo.png" Width="20"
          RenderOptions.BitmapScalingMode="HighQuality"/>
                 <!-- App Title -->
                 <TextBlock Text="Attendance System"  Foreground="{DynamicResource Forground}"  VerticalAlignment="Center" Margin="8,0"/>
@@ -58,7 +58,9 @@
 
 
 
-
+                    <TextBlock x:Name="DateTimeTextBlock" Text="12:00" FontSize="12" Foreground="{DynamicResource Forground}" FontWeight="Medium" TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Text="🕒"
+                        Margin="5,0,30,0" FontSize="25" VerticalAlignment="Center" Foreground="{DynamicResource Forground}"/>
                     <Button x:Name="Minimize" FontWeight="Bold" Content="—" Width="25" Height="25" Click="Minimize_Click" BorderBrush="Transparent" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent"/>
                     <Button x:Name="Maximize"  FontWeight="Bold" Content="🗖" Width="25" Height="25" Click="Maximize_Click" BorderBrush="Transparent" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent" />
                     <Button x:Name="Colose"  FontWeight="Bold" Content="🗙" Width="25" Height="25" BorderBrush="Transparent" Click="Close_Click" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent" />

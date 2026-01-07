@@ -1,15 +1,17 @@
 ﻿using Automated_Employee_Attendance_System.Models;
 using Automated_Employee_Attendance_System.Services;
 using Hardcodet.Wpf.TaskbarNotification;
+using System.Drawing;
+using System.IO;
+using System.Windows.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using XamlAnimatedGif;
-using System.Drawing;
 
 namespace Automated_Employee_Attendance_System
 {
@@ -21,6 +23,7 @@ namespace Automated_Employee_Attendance_System
         private TaskbarIcon _trayIcon;
         private User _user;
         private readonly ESP_Services _esp = new ESP_Services();
+        private DispatcherTimer timer;
 
         public MainWindow(User user)
         {
@@ -37,6 +40,8 @@ namespace Automated_Employee_Attendance_System
 
             Loaded += async (_, _) => await _esp.ConnectToSavedDevice();
             SetupTrayIcon();
+
+            StartDateTime();
         }
 
 
@@ -202,5 +207,20 @@ private void Maximize_Click(object sender, RoutedEventArgs e)
         }
 
         #endregion
+
+
+
+        private void StartDateTime()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (s, e) =>
+            {
+                DateTimeTextBlock.Text =
+                    DateTime.Now.ToString("dddd, dd MMMM yyyy\nHH:mm:ss");
+            };
+            timer.Start();
+        }
+
     }
 }

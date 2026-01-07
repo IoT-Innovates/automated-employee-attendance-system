@@ -262,7 +262,7 @@ RowStyle="{StaticResource DataGridRowStyle}">
                            Margin="0,20,0,5"
                            HorizontalAlignment="Center"/>
 
-                                            <TextBlock TextWrapping="WrapWithOverflow" Text="Place the employee's finger on the hardware sensor."
+                                            <TextBlock x:Name="Fingerinfo" TextWrapping="WrapWithOverflow" Text="Place the employee's finger on the hardware sensor."
                            FontSize="12"
                            Foreground="Gray"
                            TextAlignment="Center"

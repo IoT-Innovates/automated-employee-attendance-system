@@ -9,6 +9,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>False</UseWindowsForms>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>logo (1).ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +27,6 @@
     <None Remove="UI\LoginCharacterAnimation.gif" />
     <None Remove="UI\Login_D.png" />
     <None Remove="UI\Login_W.png" />
-    <None Remove="UI\logo.ico" />
     <None Remove="UI\logo.png" />
     <None Remove="UI\Report.png" />
     <None Remove="UI\ReportS.png" />
@@ -38,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="logo (1).ico" />
     <Content Include="UI\Attendance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -69,6 +70,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UI\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UI\Report.png">
@@ -115,9 +119,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="UI\dashload.gif">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="UI\logo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
