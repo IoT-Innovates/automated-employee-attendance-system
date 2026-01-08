@@ -1,0 +1,72 @@
+<Window x:Class="Automated_Employee_Attendance_System.AttendanceEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Edit Attendance Record" 
+        Height="350" 
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        FontFamily="{StaticResource CustomFont}"
+        Background="{DynamicResource Background}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" 
+                   Text="Edit Attendance Record"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   Foreground="{DynamicResource Forground}"
+                   Margin="0,0,0,20"/>
+
+        <!-- Form -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,20">
+
+            <!-- Employee Selection -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Employee" Foreground="{DynamicResource Forground}" FontSize="12" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CmbEmployee" 
+                          Height="35"
+                          DisplayMemberPath="DisplayText"
+                          SelectedValuePath="emp_id"/>
+            </StackPanel>
+
+            <!-- Date -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Date" Foreground="{DynamicResource Forground}" FontSize="12" Margin="0,0,0,5"/>
+                <DatePicker x:Name="DpDate" Height="35"/>
+            </StackPanel>
+
+            <!-- Time -->
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Time (HH:mm)" Foreground="{DynamicResource Forground}" FontSize="12" Margin="0,0,0,5"/>
+                <TextBox x:Name="TxtTime" 
+                         Height="35"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right">
+            <Button Content="Save"
+                    Click="Save_Click"
+                    Style="{StaticResource ActionButton}"
+                    Width="80"
+                    Height="35"
+                    Margin="0,0,10,0"/>
+            <Button Content="Cancel"
+                    Click="Cancel_Click"
+                    Style="{StaticResource ActionButton}"
+                    Width="80"
+                    Height="35"/>
+        </StackPanel>
+    </Grid>
+</Window>

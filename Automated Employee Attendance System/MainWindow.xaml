@@ -58,9 +58,7 @@
 
 
 
-                    <TextBlock x:Name="DateTimeTextBlock" Text="12:00" FontSize="12" Foreground="{DynamicResource Forground}" FontWeight="Medium" TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <TextBlock Text="🕒"
-                        Margin="5,0,30,0" FontSize="25" VerticalAlignment="Center" Foreground="{DynamicResource Forground}"/>
+                
                     <Button x:Name="Minimize" FontWeight="Bold" Content="—" Width="25" Height="25" Click="Minimize_Click" BorderBrush="Transparent" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent"/>
                     <Button x:Name="Maximize"  FontWeight="Bold" Content="🗖" Width="25" Height="25" Click="Maximize_Click" BorderBrush="Transparent" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent" />
                     <Button x:Name="Colose"  FontWeight="Bold" Content="🗙" Width="25" Height="25" BorderBrush="Transparent" Click="Close_Click" Style="{DynamicResource NavigationButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True" Margin="5" Foreground="{DynamicResource Forground}" Background="Transparent" />
@@ -231,7 +229,22 @@
 
 
 
-            <StackPanel Height="100"  VerticalAlignment="Bottom" Grid.Row="2">
+            <StackPanel Height="auto"  VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,0,20">
+                <Border Width="260" Background="#330660FE" Height="100" Margin="10" CornerRadius="8" BorderThickness="1" >
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Foreground="#0660FE" x:Name="DateTimeTextBlock"
+           TextAlignment="Center">
+    <Run x:Name="DateRun"
+         FontSize="18"/>
+    <LineBreak/>
+    <Run x:Name="TimeRun"
+         FontSize="36"
+         FontWeight="Bold"/>
+                        </TextBlock>
+
+
+                    </StackPanel>
+                </Border>
                 <Line X1="0" Y1="0" X2="350" Y2="0" Stroke="Gray" StrokeThickness="0.5" />
 
                 <Border Margin="10" Width="250" BorderBrush="#35D499" Background="#3335D499"  BorderThickness="1" CornerRadius="5">

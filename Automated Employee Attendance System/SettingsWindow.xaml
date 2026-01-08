@@ -183,6 +183,7 @@
                             <Button Content="Save"  Click="SaveEmail_Click" Width="100" Margin="5" Style="{DynamicResource ActionButton}" />
                             <Button Content="Edit" Margin="5" Width="100" Style="{DynamicResource NavigationButtonStyle}" />
                         </StackPanel>
+
                        
 
 

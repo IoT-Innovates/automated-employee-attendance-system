@@ -30,9 +30,9 @@ namespace Automated_Employee_Attendance_System.Services
 
             // ✅ ALWAYS create tables (IF NOT EXISTS prevents duplicates)
             CreateTables();
-            
+
             SystemServices.Log("✓ Database initialized");
-            }
+        }
 
         private static void CreateTables()
         {
@@ -163,9 +163,9 @@ namespace Automated_Employee_Attendance_System.Services
                             {
                                 employees.Add(new Employee
                                 {
-                                    emp_id = reader["emp_id"].ToString(),
-                                    name = reader["name"].ToString(),
-                                    email = reader["email"].ToString(),
+                                    emp_id = reader["emp_id"].ToString() ?? "",
+                                    name = reader["name"].ToString() ?? "",
+                                    email = reader["email"].ToString() ?? "",
                                     finger_id = Convert.ToInt32(reader["finger_id"])
                                 });
                             }
@@ -303,10 +303,10 @@ namespace Automated_Employee_Attendance_System.Services
                             {
                                 attendanceList.Add(new Attendance
                                 {
-                                    emp_id = reader["emp_id"].ToString(),
+                                    emp_id = reader["emp_id"].ToString() ?? "",
                                     finger_id = Convert.ToInt32(reader["finger_id"]),
-                                    date = reader["date"].ToString(),
-                                    time = reader["time"].ToString()
+                                    date = reader["date"].ToString() ?? "",
+                                    time = reader["time"].ToString() ?? ""
                                 });
                             }
                         }
@@ -350,10 +350,10 @@ namespace Automated_Employee_Attendance_System.Services
                             {
                                 attendanceList.Add(new Attendance
                                 {
-                                    emp_id = reader["emp_id"].ToString(),
+                                    emp_id = reader["emp_id"].ToString() ?? "",
                                     finger_id = Convert.ToInt32(reader["finger_id"]),
-                                    date = reader["date"].ToString(),
-                                    time = reader["time"].ToString()
+                                    date = reader["date"].ToString() ?? "",
+                                    time = reader["time"].ToString() ?? ""
                                 });
                             }
                         }
@@ -366,6 +366,75 @@ namespace Automated_Employee_Attendance_System.Services
             }
 
             return attendanceList;
+        }
+
+        public static void DeleteAttendance(Attendance attendance)
+        {
+            try
+            {
+                using (var conn = new SqliteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"
+                        DELETE FROM Attendance 
+                        WHERE emp_id = @emp_id AND date = @date AND time = @time";
+
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = query;
+                        cmd.Parameters.AddWithValue("@emp_id", attendance.emp_id);
+                        cmd.Parameters.AddWithValue("@date", attendance.date);
+                        cmd.Parameters.AddWithValue("@time", attendance.time);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                SystemServices.Log($"Attendance deleted from database: {attendance.emp_id} at {attendance.time}");
+            }
+            catch (Exception ex)
+            {
+                SystemServices.Log($"Database delete attendance error: {ex.Message}");
+                throw;
+            }
+        }
+
+        public static void UpdateAttendance(Attendance oldAttendance, Attendance newAttendance)
+        {
+            try
+            {
+                using (var conn = new SqliteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"
+                        UPDATE Attendance 
+                        SET emp_id = @new_emp_id, finger_id = @new_finger_id, date = @new_date, time = @new_time
+                        WHERE emp_id = @old_emp_id AND date = @old_date AND time = @old_time";
+
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = query;
+                        cmd.Parameters.AddWithValue("@new_emp_id", newAttendance.emp_id);
+                        cmd.Parameters.AddWithValue("@new_finger_id", newAttendance.finger_id);
+                        cmd.Parameters.AddWithValue("@new_date", newAttendance.date);
+                        cmd.Parameters.AddWithValue("@new_time", newAttendance.time);
+                        cmd.Parameters.AddWithValue("@old_emp_id", oldAttendance.emp_id);
+                        cmd.Parameters.AddWithValue("@old_date", oldAttendance.date);
+                        cmd.Parameters.AddWithValue("@old_time", oldAttendance.time);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                SystemServices.Log($"Attendance updated in database: {newAttendance.emp_id} at {newAttendance.time}");
+            }
+            catch (Exception ex)
+            {
+                SystemServices.Log($"Database update attendance error: {ex.Message}");
+                throw;
+            }
         }
     }
 }

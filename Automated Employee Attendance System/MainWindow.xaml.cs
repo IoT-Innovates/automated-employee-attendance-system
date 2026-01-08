@@ -214,13 +214,16 @@ private void Maximize_Click(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
+
             timer.Tick += (s, e) =>
             {
-                DateTimeTextBlock.Text =
-                    DateTime.Now.ToString("dddd, dd MMMM yyyy\nHH:mm:ss");
+                DateRun.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+                TimeRun.Text = DateTime.Now.ToString("HH:mm:ss");
             };
+
             timer.Start();
         }
+
 
     }
 }
