@@ -19,10 +19,24 @@
         <TabControl Style="{DynamicResource TabControl}">
             <TabItem Style="{DynamicResource TabItem}" Header="Employee">
 
+                <StackPanel Margin="30">
 
-                <Border Background="{DynamicResource Background}" CornerRadius="15" Margin="15" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
 
-                    <DataGrid x:Name="EmployeeGrid"
+
+                    <StackPanel Margin="0,10,0,10">
+                        <TextBlock Foreground="{DynamicResource Forground}" Text="Employee Details" 
+             VerticalAlignment="Center" 
+             HorizontalAlignment="Left" 
+             FontSize="25"
+             FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="" FontSize="12" Foreground="Gray" />
+
+                    </StackPanel>
+
+                    <Border Background="{DynamicResource Background}" CornerRadius="15" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+
+                        <DataGrid x:Name="EmployeeGrid"
 Background="Transparent"
 RowBackground="White"
 AlternatingRowBackground="#f0f0f0"
@@ -36,28 +50,30 @@ CellStyle="{StaticResource DataGridCellStyle}"
 Style="{StaticResource DataGridStyle}"
 ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
 RowStyle="{StaticResource DataGridRowStyle}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding emp_id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                            <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
-                            <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding emp_id}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                                <DataGridTextColumn Header="Employee Name" Binding="{Binding name}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
+                                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*" ElementStyle="{DynamicResource DataGridColumnsStyle}" />
 
 
-                            <DataGridTemplateColumn Header="Action" Width="100">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Delete"
+                                <DataGridTemplateColumn Header="Action" Width="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Delete"
                                             Style="{DynamicResource ActionButton}"
                                      Click="DeleteEmployee_Click"
                                     CommandParameter="{Binding}" />
 
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        </DataGrid.Columns>
-                    </DataGrid>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
-                </Border>
+                    </Border>
+                </StackPanel>
+              
 
 
             </TabItem>
