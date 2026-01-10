@@ -81,7 +81,7 @@
 
                         <lvc:CartesianChart Series="{Binding AttendanceSeries}"
                                 LegendLocation="None"
-                                Height="220"
+                                Height="320"
                                 Background="Transparent">
 
                             <!-- X AXIS -->
@@ -97,9 +97,12 @@
 
                             <!-- Y AXIS (hidden) -->
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis ShowLabels="True">
+                                <lvc:Axis MinValue="0"
+                                          MaxValue="20"
+                                    ShowLabels="True">
                                     <lvc:Axis.Separator>
-                                        <lvc:Separator IsEnabled="False"/>
+                                        <lvc:Separator IsEnabled="False"
+                                                       Step="2"/>
                                     </lvc:Axis.Separator>
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
@@ -144,7 +147,8 @@
             Margin="17,0,0,0">
 
                             <!-- 🔄 NOT REACHABLE / LOADING GIF -->
-                            <Image Width="180"
+                            <Image Width="200"
+                                   Height="280"
                                    Margin="-45,40,0,0"
            RenderOptions.BitmapScalingMode="HighQuality"
            SnapsToDevicePixels="True"
