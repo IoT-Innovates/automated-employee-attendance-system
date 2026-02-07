@@ -44,7 +44,7 @@
             <DockPanel>
 
                 <Image Source="/UI/logo.png" Width="20"
-         RenderOptions.BitmapScalingMode="HighQuality"/>
+         RenderOptions.BitmapScalingMode="HighQuality" Margin="10,0,0,0"/>
                 <!-- App Title -->
                 <TextBlock Text="Attendance System"  Foreground="{DynamicResource Forground}"  VerticalAlignment="Center" Margin="8,0"/>
                 <!-- Control Panel -->
@@ -230,7 +230,7 @@
 
 
             <StackPanel Height="auto"  VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,0,20">
-                <Border Width="260" Background="#330660FE" Height="100" Margin="10" CornerRadius="8" BorderThickness="1" >
+                <Border Width="260" Background="#330660FE" Height="100" Margin="10" CornerRadius="8" BorderBrush="#0660FE" BorderThickness="1" >
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Foreground="#0660FE" x:Name="DateTimeTextBlock"
            TextAlignment="Center">
