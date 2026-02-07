@@ -18,7 +18,11 @@
     <SolidColorBrush x:Key="IsMouseOver" Color="#1a1a1a"/>
     <SolidColorBrush x:Key="ThemeBackground" Color="#1a1a1a"/>
     <SolidColorBrush x:Key="ThemeBackgroundDotsColor" Color="#30FFFFFF"/>
-    
+
+
+
+
+
 
     <!-- Main DataGrid Style -->
     <Style x:Key="DataGridStyle" TargetType="DataGrid">
