@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Automated Employee Attendance System"
-#define MyAppVersion "1.5"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "IoT innovates, Inc."
 #define MyAppURL "https://github.com/IoT-Innovates/automated-employee-attendance-system"
 #define MyAppExeName "Automated Employee Attendance System.exe"
